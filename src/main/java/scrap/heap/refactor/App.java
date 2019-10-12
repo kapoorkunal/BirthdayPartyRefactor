@@ -1,38 +1,29 @@
 package scrap.heap.refactor;
 
+import scrap.heap.refactor.domain.constants.OrderType;
+
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
 
-    public static void main(String[] args) {
+  public String getGreeting() {
+    return "Hello world.";
+  }
 
-         //Place birthday party orders
-         order("red", "mylar", "4", "chocolate", "chocolate", "circle", "large", "brown" );
-         order("blue", "latex", "7", "Vanilla", "chocelate", "square", "med", "brown" );
-         order("yellow", "mylar", "4", "vanilla", "vanilla", "square", "small", "yellow" );
+  public static void main(String[] args) {
 
-    }
+    OrderProcessor.buildOrder(OrderType.BALLOON, new String[]{"red", "mylar", "4"});
+    OrderProcessor
+        .buildOrder(OrderType.CAKE,
+            new String[]{"chocolate", "chocolate", "circle", "large", "brown"});
 
-    private static void order(String balloonColor, String material, String number, String flavor, String frostingFlavor, String shape, String size, String cakeColor){
+    OrderProcessor.buildOrder(OrderType.BALLOON, new String[]{"yellow", "mylar", "4"});
+    OrderProcessor
+        .buildOrder(OrderType.CAKE,
+            new String[]{"Vanilla", "chocolate", "square", "med", "brown"});
 
-        orderBalloons(balloonColor, material, number);
-
-        orderCake(frostingFlavor, flavor, shape, size, cakeColor);
-    }
-
-    private static void orderBalloons(String balloonColor, String material, String number){
-
-        //for the purposes of this exercise, pretend this method works and adds balloons to the order
-        System.out.println("Balloons ordered; " + balloonColor + ", " + material  + ", " + number);
-
-    }
-
-    private static void orderCake(String flavor, String frostingFlavor, String shape, String size, String cakeColor){
-
-        //for the purposes of this exercise, pretend that this method adds a cake to the order
-        System.out.println("cake ordered; " + flavor + ", " + frostingFlavor  + ", " + shape + ", " + size + ", " + cakeColor);
-
-    }
+    System.out.println(OrderProcessor.buildOrder(OrderType.BALLOON, new String[]{"blue", "latex", "7"}));
+    System.out.println(OrderProcessor
+        .buildOrder(OrderType.CAKE,
+            new String[]{"vanilla", "vanilla", "square", "small", "yellow"}));
+  }
 
 }
